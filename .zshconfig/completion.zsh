@@ -7,12 +7,15 @@ setopt nobeep               # don't beep on tab completes
 setopt complete_in_word     # autocomplete from within a word
 setopt always_to_end        # move cursor to end of word after complete
 
-unsetopt menu_complete      # don't automatically complete a word without sufficientmatch
-setopt auto_menu            # after tabbing once 
+unsetopt menu_complete      # don't automatically complete a word without sufficient match
+setopt auto_menu            # after tabbing once, step through the menu of completions
 
 
 # Pretty completion on "kill <process_name>"
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 
-# bindkey -M menuselect '^o' accept-and-infer-next-history
+# Highlights selected item in completion list
 zstyle ':completion:*:*:*:*:*' menu select
+
+# pasting with tabs doesn't perform completion
+zstyle ':completion:*' insert-tab pending

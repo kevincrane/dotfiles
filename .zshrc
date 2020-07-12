@@ -18,11 +18,13 @@
 #   - Terminal config (also make red and blue more obvious colors for ls; and don't highlight directories in ls)
 # - find unique macos settings
 # - find all homebrew apps
+# - README (how to bootstrap, how to clean, how to add new plugins, how to add new dotfiles, how to install apps, how add or update plugins)
 # - done, go play with your computer
 
 
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
+autoload -U select-word-style && select-word-style bash
 
 # Load all zsh configs fromm .zshconf
 for file in $HOME/.zshconfig/*.zsh; do
@@ -40,7 +42,6 @@ setopt auto_cd              # Automatically cd if you type just a directory name
 setopt interactivecomments  # Recognize comments on the CLI
 
 # Move cursor between words with Bash behavior
-autoload -U select-word-style && select-word-style bash
 
 
 
