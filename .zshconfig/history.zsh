@@ -25,8 +25,6 @@ function omz_history {
     builtin fc -l "${@[0,-2]}" 1
   elif [[ ${@[-1]-} = *[0-9]* ]]; then
     # if a number was provided, print that many history events
-    echo ${@[-1]-}
-    echo fc -l ""${@[0,-2]}"" -"${@[-1]-}"
     builtin fc -l ""${@[0,-2]}"" -"${@[-1]-}"
   else
     # default behavior, if no arguments provided, print the last 15 events

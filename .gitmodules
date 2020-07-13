@@ -1,3 +1,9 @@
 [submodule ".zshconfig/plugins/zsh-syntax-highlighting"]
 	path = .zshconfig/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule ".zshconfig/plugins/zsh-history-substring-search"]
+	path = .zshconfig/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
+[submodule ".zshconfig/plugins/zsh-z"]
+	path = .zshconfig/plugins/zsh-z
+	url = https://github.com/agkozak/zsh-z

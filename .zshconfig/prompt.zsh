@@ -25,7 +25,7 @@ function date_and_time() {
   echo "%{$fg[blue]%}%D{[%D %T]}%{$reset_color%}"
 }
 
-# Prints the nae of the current git branch
+# Prints the name of the current git branch
 if (( $+commands[git] ))
 then
   git="$commands[git]"

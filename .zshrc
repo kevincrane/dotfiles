@@ -1,9 +1,6 @@
 ##### kcrane's zsh config #####
 
 # TODO
-# - load plugins as submodules
-#   - in plugins.zsh, source the appropriate file for each plugin
-#   - for each plugin in the list below, add as submodule, source from plugins.zsh
 # - Add a bin directory to dotfiles
 # - Add an install dir with scripts to install various things
 #   - one folder for each app to install
@@ -24,6 +21,10 @@
 
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
+export ZSH_CACHE_DIR="$HOME/.cache/zsh"
+mkdir -p $ZSH_CACHE_DIR
+
+# Move cursor between words with Bash behavior (must be called before plugins)
 autoload -U select-word-style && select-word-style bash
 
 # Load all zsh configs fromm .zshconf
@@ -33,33 +34,10 @@ done;
 unset file;
 
 
-### Miscellaneous configs ###
-# Note: can be moved to misc.zsh if too unwieldy here
+### Extra configs ###
+# NB: can be moved to misc.zsh if too unwieldy here
 
 # Allow the shell to be pretty
 autoload -U colors && colors
 setopt auto_cd              # Automatically cd if you type just a directory name
 setopt interactivecomments  # Recognize comments on the CLI
-
-# Move cursor between words with Bash behavior
-
-
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    colorize
-    git
-    history
-    history-substring-search
-    jsontools
-    nmap
-    ripgrep
-    zsh-syntax-highlighting
-)
-
-# The git plugin installs 150 aliases; this undoes all of them.
-# unalias ${(k)aliases[(R)git *]}
