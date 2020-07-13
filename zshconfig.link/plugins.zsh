@@ -24,7 +24,9 @@ for plugin ($plugins); do
     source $PLUGIN_DIR/$plugin/$plugin.plugin.zsh
   elif [ -f $PLUGIN_DIR/$plugin/$plugin.zsh ]; then
     source $PLUGIN_DIR/$plugin/$plugin.zsh
-  elif [ ! -f $PLUGIN_DIR/$plugin/_$plugin ]; then
+  elif [ -f $PLUGIN_DIR/$plugin/_$plugin ]; then
+    continue
+  else
     echo "warning: zsh plugin '$plugin' not found"
   fi
 done

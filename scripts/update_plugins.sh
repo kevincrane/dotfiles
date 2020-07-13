@@ -9,7 +9,6 @@ for plugin in $(ls $PLUGIN_DIR); do
         echo "=> Pulling latest version of $plugin (branch $current_branch)...";
         git pull;
     else
-        echo "$PLUGIN_DIR/$plugin/.git"
         echo "=> Skipping plugin $plugin, not a git repo"
     fi
 done

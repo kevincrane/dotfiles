@@ -1,16 +1,10 @@
 ##### kcrane's zsh config #####
 
 # TODO
-# - Add a bin directory to dotfiles
 # - Add an install dir with scripts to install various things
 #   - one folder for each app to install
-# - bootstrap.sh
-#   - find every directory; mkdir -p each of the directories
-#   - find every file; symlink each file to same location in ~
-#   - add option --clean; does same process in reverse, but deletes symlink for files and rmdir for directories
-# - Create diff script; call it before running bootstrap.sh and ask for confirmation to proceed if diffs present
 # - find remaining rc files to make
-#   - vimrc
+#   - vimrc & plugins
 #   - gitconfig
 #   - Terminal config (also make red and blue more obvious colors for ls; and don't highlight directories in ls)
 # - find unique macos settings
@@ -21,6 +15,8 @@
 
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
+
+# Define our cache directory
 export ZSH_CACHE_DIR="$HOME/.cache/zsh"
 mkdir -p $ZSH_CACHE_DIR
 
