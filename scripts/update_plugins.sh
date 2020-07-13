@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-PLUGIN_DIR=${0:a:h}/../.zshconfig/plugins
+PLUGIN_DIR=${0:a:h}/../zshconfig.link/plugins
 
 for plugin in $(ls $PLUGIN_DIR); do
     cd $PLUGIN_DIR/$plugin

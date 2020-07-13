@@ -24,11 +24,11 @@ setopt auto_menu            # after tabbing once, step through the menu of compl
 # Pretty completion on "kill <process_name>"
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 
-# Highlights selected item in completion list
-zstyle ':completion:*' menu select
-
-# pasting with tabs doesn't perform completion
-zstyle ':completion:*' insert-tab pending
+zstyle ':completion:*' menu select              # Highlights selected item in completion list
+zstyle ':completion:*' insert-tab pending       # Pasting with tabs doesn't perform completion
+zstyle ':completion:*' verbose true             # provide verbose completion information
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}   # activate color-completion
+zstyle ':completion:*:processes' command 'ps -au$USER'          # on processes completion complete all user processes
 
 # Set completion cache location
 zstyle ':completion::complete:*' use-cache on

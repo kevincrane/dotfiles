@@ -43,7 +43,8 @@ function git_dirty() {
 }
 
 function git_prompt_info() {
-  if $(! $git status -s &> /dev/null)
+  local ref=$(git symbolic-ref HEAD 2> /dev/null)
+  if $(! $git symbolic-ref HEAD &> /dev/null)
   then
     echo ""
   else
