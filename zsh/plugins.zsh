@@ -20,6 +20,8 @@ plugins=(
 
 # Load all of the plugins that were defined in ~/.zshrc
 for plugin ($plugins); do
+  fpath=($fpath $PLUGIN_DIR/$plugin)  # used for autocompletion of functions
+
   if [ -f $PLUGIN_DIR/$plugin/$plugin.plugin.zsh ]; then
     source $PLUGIN_DIR/$plugin/$plugin.plugin.zsh
   elif [ -f $PLUGIN_DIR/$plugin/$plugin.zsh ]; then

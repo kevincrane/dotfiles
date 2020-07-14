@@ -1,60 +1,137 @@
-#!/usr/bin/env zsh
-
-# This script links all of our dotfiles into place in the HOME directory;
-# For each *.link file, it checks if it already exists in the destination
-# and moves it to BACKUP_DIR if necessary, then symlinks itself in place.
+#!/usr/bin/env bash
 #
-# For MERGED_DIRS, we do the same process but use the same directory and
-# file names in HOME as the desintation, letting us merge in side-by-side
-# with other pre-existing files in bin/ or .config/
+# Usage: ./bootstrap.sh
+# This script does the following:
+# - setup gitconfig
+# - link all *.link files to $HOME
+# - run `dot`, which updates and runs all homebrew and install.sh scripts
 
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
 
-ROOT_DIR="$(cd "$(dirname "${0:a:h}")" ; pwd -P)"
-BACKUP_DIR="$HOME/.cache/dotfiles_bak"
+set -e
 
-# The contents within these directories will be symlinked to their
-# corresponding directory in HOME
-MERGED_DIRS=(
-  bin
-  # .config
-)
+echo ''
 
-# Link all .link files as dotfiles in HOME; moves any existing files to backup
-for dot_file in $ROOT_DIR/*.link; do
-  filename=$(basename ${dot_file%.*})
+# Pretty-print log messages
+info () {
+  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+}
+user () {
+  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
+}
 
-  if [ -e $HOME/.${filename} ]; then
-    if ! [ -L $HOME/.$filename ]; then
-      mkdir -p $BACKUP_DIR
-      # Move existing dotfile to $BACKUP_DIR
-      mv $HOME/.$filename $BACKUP_DIR/.$filename
-    else
-      echo "=> Symlink already exists for .$filename"
-      continue
-    fi
-  fi
-  echo "=> Creating link for .${filename%.*}" # strips off .link extension
-  ln -s $dot_file $HOME/.${filename%.*}
-done
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
 
-# For each merged directory, link its contents to the same dir in HOME, so the
-# symlinks can comingle with other pre-existing contents
-for merge_dir in $MERGED_DIRS; do
-  for file in $ROOT_DIR/$merge_dir/*; do
-    filename=$(basename $file)
+fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+  exit
+}
 
-    mkdir -p $HOME/$merge_dir
-    if [ -e $HOME/$merge_dir/$filename ]; then
-      if ! [ -L $HOME/${merge_dir}/$filename ]; then
-        mkdir -p $BACKUP_DIR/$merge_dir
-        # Move existing dotfile to $BACKUP_DIR
-        mv $HOME/$merge_dir/$filename $BACKUP_DIR/$merge_dir/$filename
+# Symlink *.link files to the $HOME directory
+link_file () {
+  local src=$1 dst=$2
+
+  local overwrite= backup= skip=
+  local action=
+
+  # Check if a file/dir/link already exists for this file
+  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
+  then
+
+    if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
+    then
+
+      local currentSrc="$(readlink $dst)"
+      if [ "$currentSrc" == "$src" ]
+      then
+        # matching symlink already exists for this file
+        skip=true;
       else
-        echo "=> $merge_dir/${filename} is already symlinked"
-        continue
+        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+        [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        read -n 1 action
+
+        case "$action" in
+          o )
+            overwrite=true;;
+          O )
+            overwrite_all=true;;
+          b )
+            backup=true;;
+          B )
+            backup_all=true;;
+          s )
+            skip=true;;
+          S )
+            skip_all=true;;
+          * )
+            ;;
+        esac
       fi
     fi
-    echo "=> Creating link for $merge_dir/$filename"
-    ln -s $ROOT_DIR/$merge_dir/$filename $HOME/$merge_dir/$filename
+
+    overwrite=${overwrite:-$overwrite_all}
+    backup=${backup:-$backup_all}
+    skip=${skip:-$skip_all}
+
+    if [ "$overwrite" == "true" ]
+    then
+      rm -rf "$dst"
+      success "removed $dst"
+    fi
+
+    if [ "$backup" == "true" ]
+    then
+      mv "$dst" "${dst}.backup"
+      success "moved $dst to ${dst}.backup"
+    fi
+
+    if [ "$skip" == "true" ]
+    then
+      success "skipped $src"
+    fi
+  fi
+
+  if [ "$skip" != "true" ]  # "false" or empty
+  then
+    ln -s "$1" "$2"
+    success "linked $1 to $2"
+  fi
+}
+
+install_dotfiles () {
+  info "linking dotfiles (*.link) from $DOTFILES_ROOT"
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.link' -not -path '*.git*')
+  do
+    dst="$HOME/.$(basename "${src%.*}")"
+    link_file "$src" "$dst"
   done
-done
+}
+
+
+##### bootstrap.sh starts running from here #####
+
+# Link all dotfiles to $HOME
+install_dotfiles
+
+# If we're on a Mac, let's install and setup homebrew.
+if [ "$(uname -s)" == "Darwin" ]
+then
+  info "installing dependencies with dot"
+  if source bin/dot | while read -r data; do info "$data"; done
+  then
+    success "dependencies installed"
+  else
+    fail "error installing dependencies"
+  fi
+fi
+
+echo ''
+echo '  All installed!'

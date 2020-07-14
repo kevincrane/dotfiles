@@ -5,7 +5,7 @@ autoload -U colors && colors
 setopt prompt_subst         # Reevaluate prompt on each line
 
 # Prints either the full path from root/home, or the path from .git root
-function get_pwd(){
+function get_pwd() {
   git_root=$PWD
   while [[ $git_root != / && ! -e $git_root/.git ]]; do
     git_root=$git_root:h

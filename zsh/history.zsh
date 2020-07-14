@@ -53,6 +53,7 @@ setopt hist_find_no_dups      # when searching history, hide duplicates
 setopt hist_ignore_dups       # ignore adjacent duplicated commands when stepping through hist
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
-setopt share_history          # share history between shells (like append_history)
+# setopt share_history          # share history between shells (like append_history)
+setopt append_history         # append commands to history when the shell exits
 
 setopt HIST_IGNORE_ALL_DUPS   # when adding a new entry delete older duplicates

@@ -1,13 +1,6 @@
 # Largely copied from oh-my-zsh (.oh-my-zsh/lib/completion.zsh)
 
-# Build up function completion fpath from plugin directories
-PLUGIN_DIR=${0:a:h}/plugins
-for plugin in $(ls $PLUGIN_DIR); do
-  fpath=($fpath $PLUGIN_DIR/$plugin)
-done
-
 # Load all autocomplete functions
-autoload -U compinit && compinit -d $ZSH_CACHE_DIR/zcompdump-$ZSH_VERSION
 autoload -U +X bashcompinit && bashcompinit # load bash autocompletions as well
 
 setopt nobeep               # don't beep on tab completes
