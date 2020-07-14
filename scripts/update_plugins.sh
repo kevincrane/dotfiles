@@ -2,6 +2,7 @@
 
 PLUGIN_DIR=${0:a:h}/../zshconfig.link/plugins
 
+git submodule update --recursive --remote 
 for plugin in $(ls $PLUGIN_DIR); do
     cd $PLUGIN_DIR/$plugin
     if builtin test -e $PLUGIN_DIR/$plugin/.git; then

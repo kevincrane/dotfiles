@@ -34,21 +34,17 @@ else
 fi
 
 function git_dirty() {
-  if [[ $($git status -uno --porcelain) == "" ]]
-  then
-    echo ""
-  else
+  # For large repos, this command can take a while; add a local git config
+  # to skip it: `git config --local --add zsh.hide-dirty 1`
+  if [[ "$(git config --get zsh.hide-dirty)" != "1" &&
+         $($git status -uno --porcelain) != "" ]]; then
     echo "%{$fg_bold[red]%} *%{$fg[green]%}"
   fi
 }
 
 function git_prompt_info() {
   local ref=$(git symbolic-ref HEAD 2> /dev/null)
-  if $(! $git symbolic-ref HEAD &> /dev/null)
-  then
-    echo ""
-  else
-    ref=$($git symbolic-ref HEAD 2>/dev/null) || return
+  if [[ -n $ref ]]; then
     echo "%{$fg[green]%}(${ref#refs/heads/}$(git_dirty))%{$reset_color%} "
   fi
 }
