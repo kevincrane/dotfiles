@@ -24,10 +24,10 @@ There's a few special files in the hierarchy.
 Run this:
 
 ```sh
-git clone https://github.com/kevincrane/dotfiles.git ~/.dotfiles
-ln -s ~/.dotfiles ~/workspace/dotfiles  # optional, but i instinctively make changes from workspace
+git clone --recursive https://github.com/kevincrane/dotfiles.git ~/.dotfiles
+ln -s ~/.dotfiles ~/github/dotfiles  # optional, but i instinctively make changes from workspace
 cd ~/.dotfiles
-script/bootstrap
+scripts/bootstrap.sh
 ```
 
 This will symlink the appropriate files in `.dotfiles` to your home directory.

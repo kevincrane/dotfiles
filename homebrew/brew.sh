@@ -75,6 +75,9 @@ brew install zopfli
 
 # Extra utilities
 brew install ripgrep
+brew cask install iterm2
+
+# Terminal utilities
 brew install fasd
 eval "$(fasd --init auto)"
 brew install fzf
