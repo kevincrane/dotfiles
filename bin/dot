@@ -47,7 +47,6 @@ export ZSH=$HOME/.dotfiles
 
 # Update git plugin submodules
 echo "=> updating git plugin submodules"
-git submodule update --init --recursive
 git submodule foreach 'echo "=> Pulling latest version of ${name#zsh/plugins/} (branch $(git rev-parse --abbrev-ref HEAD))..."; git pull'
 
 # Set macOS defaults

@@ -31,6 +31,30 @@ fail () {
   exit
 }
 
+# Your git config might be different on each machine (e.g. work/personal); this creates a new ~/.gitconfig.local
+setup_gitconfig () {
+  if ! [ -f git/gitconfig.local.link ]
+  then
+    info '=> setting up gitconfig.local'
+
+    git_credential='cache'
+    if [ "$(uname -s)" == "Darwin" ]
+    then
+      git_credential='osxkeychain'
+    fi
+
+    user ' - What is your github author name?'
+    read -e git_authorname
+    user ' - What is your github author email?'
+    read -e git_authoremail
+
+    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.link.example > git/gitconfig.local.link
+
+    success 'gitconfig'
+  fi
+}
+
+
 # Symlink *.link files to the $HOME directory
 link_file () {
   local src=$1 dst=$2
@@ -117,6 +141,9 @@ install_dotfiles () {
 
 
 ##### bootstrap.sh starts running from here #####
+
+# Setup .gitconfig.local
+setup_gitconfig
 
 # Link all dotfiles to $HOME
 install_dotfiles

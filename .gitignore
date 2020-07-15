@@ -1,0 +1,2 @@
+# Ignore the gitconfig.link created by bootstrap.sh
+git/gitconfig.local.link

@@ -1,12 +1,60 @@
-[user]
-    name = Kevin Crane
-    email = kevincrane@gmail.com
+# Local/private config goes in the include
+[include]
+    path = ~/.gitconfig.local
+
+[alias]
+    co = checkout
+    s = status
+    a = add
+    ca = commit -a
+    cam = commit -am
+
+    d = diff
+    ds = diff --stat
+    l = log
+    # View abbreviated SHA, description, and history graph of the latest 20 commits.
+    ls = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+    pl = pull
+    plo = pull origin
+    ps = push
+    pso = push origin
+    # Interactive rebase with the given number of latest commits.
+    reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+    # Find commits by commit message
+    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+    # Find branches containing commit
+    fb = "!f() { git branch -a --contains $1; }; f"
+
+    # Remove branches that have already been merged with main. (delete merged)
+    dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+    whoami = config user.email
+    alias = config --get-regexp alias
 
 [color]
     ui = auto
 
-[credential]
-    helper = osxkeychain
-
 [core]
     excludesfile = ~/.gitignore
+
+    # Speed up commands involving untracked files such as `git status`.
+    # https://git-scm.com/docs/git-update-index#_untracked_cache
+    untrackedCache = true
+
+[apply]
+    # Detect whitespace errors when applying a patch.
+    whitespace = fix
+
+[branch]
+    # Show most recently changed branches first.
+    sort = -committerdate
+
+[diff "bin"]
+    # Use `hexdump` to diff binary files.
+    textconv = hexdump -v -C
+
+[help]
+    # Automatically correct and execute mistyped commands.
+    autocorrect = 1
