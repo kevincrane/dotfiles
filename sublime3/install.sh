@@ -4,7 +4,7 @@
 # Note for Kevin: you have a Sublime 3 license in Dropbox
 
 echo "=> Installing Sublime Text 3"
-brew cask install sublime-text
+brew cask ls --versions sublime-text || brew cask install sublime-text
 
 echo "=> Killing any running Sublime processes"
 pkill "Sublime Text"

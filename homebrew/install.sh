@@ -8,7 +8,7 @@
 # Check for Homebrew
 if test ! $(which brew)
 then
-  echo "  Installing Homebrew for you."
+  echo "=> Installing Homebrew"
 
   # Install the correct homebrew for each OS type
   if test "$(uname)" = "Darwin"
@@ -18,6 +18,7 @@ then
   then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
   fi
+  echo "=> Done installing Homebrew"
 fi
 
 exit 0
