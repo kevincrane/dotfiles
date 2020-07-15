@@ -1,0 +1,16 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Dracula Color Scheme",
+		"Git",
+		"Package Control",
+		"Protobuf Syntax Hightlighting",
+		"SublimeLinter-annotations",
+		"Terraform",
+		"ZSH"
+	]
+}

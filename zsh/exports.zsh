@@ -24,9 +24,6 @@ export GPG_TTY=$(tty);
 # Hide the “default interactive shell is now zsh” warning on macOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1;
 
-# Set Homebrew root directory
-export BREW_PREFIX=$(brew --prefix)
-
 # FZF Fuzzy Finder settings (?-key toggles preview pane in history mode)
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_TMUX_HEIGHT=10%  # don't take up more than 10% of the screen

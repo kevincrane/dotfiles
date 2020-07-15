@@ -21,8 +21,8 @@ displayUsageAndExit() {
   echo "Usage: dot [options]"
   echo ""
   echo "Options:"
-  echo "  -e, --edit    Open dotfiles directory for editing"
-  echo "  -h, --help    Show this help message and exit"
+  echo "  -e, --edit      Open dotfiles directory for editing"
+  echo "  -h, --help      Show this help message and exit"
   exit
 }
 
@@ -61,6 +61,6 @@ $ZSH/homebrew/install.sh 2>&1
 echo "=> brew update"
 brew update
 
-# Install software
+# Install all programs and configs
 echo "=> $ZSH/script/install_all.sh"
 $ZSH/script/install_all.sh
