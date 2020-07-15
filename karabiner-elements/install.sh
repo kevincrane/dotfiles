@@ -9,7 +9,7 @@ brew cask install karabiner-elements
 CURRENT_DIR="${0:a:h}"
 KARABINER_CONFIG="$HOME/.config/karabiner/karabiner.json"
 echo "=> Linking karabiner configs to $KARABINER_CONFIG"
-rm $KARABINER_CONFIG
+rm -f $KARABINER_CONFIG
 ln -s $CURRENT_DIR/karabiner.json $KARABINER_CONFIG
 
 echo "=> Done installing karabiner-elements"

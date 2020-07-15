@@ -15,7 +15,7 @@ SUBLIME_SETTINGS_DIR="$HOME/Library/Application Support/Sublime Text 3/Packages/
 for source_file in $CURRENT_DIR/settings/*; do
   dest_file="$SUBLIME_SETTINGS_DIR/$(basename $source_file)"
   echo "=> Linking Sublime config to $source_file"
-  rm $dest_file
+  rm -f $dest_file
   ln -s $source_file $dest_file
 done
 

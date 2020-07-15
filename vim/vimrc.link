@@ -1,0 +1,72 @@
+set nocompatible                " for vim settings over vi
+
+syntax on                       " Syntax highlighting
+set number                      " Enable line numbers
+"set expandtab                   " Use spaces instead of tabs
+set tabstop=4                   " Make tabs as wide as 4 spaces
+set esckeys                     " Allow cursor keys in insert mode
+set backspace=indent,eol,start  " Allow backspace in insert mode
+
+set hlsearch                    " Highlight searches
+set ignorecase                  " Ignore case of searches
+set incsearch                   " Highlight dynamically as pattern is typed
+set laststatus=2                " Always show status line
+set mouse=a                     " Enable mouse in all modes
+set noerrorbells                " Disable error bells
+set nostartofline               " Don’t reset cursor to start of line when moving around.
+set showmode                    " Show the current mode
+set title                       " Show the filename in the window titlebar
+set showcmd                     " Show the (partial) command as it’s being typed
+set scrolloff=3                 " Start scrolling three lines before the horizontal window border
+
+
+" Strip trailing whitespace (,ss)
+function! StripWhitespace()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace()<CR>
+
+
+" Centralize backups, swapfiles and undo history
+call system('mkdir -p ~/.vim/backups ~/.vim/swaps')
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+
+" guard for distributions lacking the 'persistent_undo' feature.
+" https://medium.com/@sidneyliebrand/vim-tip-persistent-undo-2fc78a2973a7
+if has('persistent_undo')
+    " define a path to store persistent undo files.
+    let target_path = expand('~/.vim/undo/')    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call system('mkdir -p ' . target_path)
+    endif    " point Vim to the defined undo directory.
+    let &undodir = target_path    " finally, enable undo persistence.
+    set undofile
+endif
+
+
+""" Vundle plugin manager """
+filetype off                    " required
+set rtp+=~/.vim/bundle/Vundle.vim  " set the runtime path to include Vundle and initialize
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'   " let Vundle manage Vundle, required
+
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }  " Install fzf; https://github.com/junegunn/fzf.vim
+Plugin 'junegunn/fzf.vim'           " Setup fzf bindings
+Plugin 'preservim/nerdtree'         " File tree; https://github.com/preservim/nerdtree
+Plugin 'sheerun/vim-polyglot'       " Syntax highlighting; https://github.com/sheerun/vim-polyglot
+Plugin 'tpope/vim-commentary'       " Comment lines with 'gcc'; https://github.com/tpope/vim-commentary
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+" Plugin keybindings
+map <C-o> :NERDTreeToggle<CR>       " Toggle nerdtree file tree with Ctrl-O
+map <C-p> :Files<CR>                " Open a file with fzf with Ctrl-P

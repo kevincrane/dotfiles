@@ -16,7 +16,7 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias workspace="cd ~/workspace"
 alias g="git"
-alias zshrc="$EDITOR ~/.zshrc"
+alias zshrc="vim ~/.zshrc"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -38,8 +38,6 @@ alias egrep='egrep --color=auto'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
-
-alias vi='vim'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
