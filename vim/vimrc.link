@@ -56,6 +56,7 @@ set rtp+=~/.vim/bundle/Vundle.vim  " set the runtime path to include Vundle and 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'   " let Vundle manage Vundle, required
 
+Plugin 'editorconfig/editorconfig-vim'  " Universal code style across editors; read from ~/.editorconfig
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }  " Install fzf; https://github.com/junegunn/fzf.vim
 Plugin 'junegunn/fzf.vim'           " Setup fzf bindings
 Plugin 'preservim/nerdtree'         " File tree; https://github.com/preservim/nerdtree

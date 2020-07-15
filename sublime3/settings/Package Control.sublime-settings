@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"Dracula Color Scheme",
+		"EditorConfig",
 		"Git",
 		"Package Control",
 		"Protobuf Syntax Hightlighting",

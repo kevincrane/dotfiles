@@ -1,0 +1,31 @@
+# Universal code style across browsers
+# https://editorconfig.org/
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+end_of_line = lf
+
+[*.py]
+indent_style = space
+indent_size = 4
+charset = utf-8
+
+
+# Tab indentation (no size specified)
+[Makefile]
+indent_style = tab
+
+# Use 2 spaces for the HTML files
+[*.{sh, html, json}]
+indent_size = 2
+
+# The JSON files contain newlines inconsistently
+[*.json]
+insert_final_newline = ignore
