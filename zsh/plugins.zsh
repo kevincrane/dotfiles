@@ -9,7 +9,8 @@ PLUGIN_DIR=${0:a:h}/plugins
 plugins=(
     colorize  # requires tool pygments from brew; source: copied from oh-my-zsh
     fasd      # minor changes, added default aliases; source: copied from oh-my-zsh
-    fzf       # special install steps in brew.sh; must copy ~/.fsf.zsh to plugins dir
+    fzf       # special install steps in brew.sh; must copy ~/.fzf.zsh to plugins dir
+    gnu-utils # source: copied from oh-my-zsh
     history
     nmap      # source: copied from oh-my-zsh
     ripgrep   # source: copied from oh-my-zsh

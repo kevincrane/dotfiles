@@ -9,3 +9,4 @@ brew cask ls --versions rectangle || brew cask install rectangle
 defaults write com.knollsoft.Rectangle alternateDefaultShortcuts -bool true
 defaults write com.knollsoft.Rectangle launchOnLogin -bool true
 defaults write com.knollsoft.Rectangle subsequentExecutionMode -int 0
+echo "=> Done installing Rectangle"

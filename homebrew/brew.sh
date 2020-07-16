@@ -1,10 +1,7 @@
 #!/usr/bin/env zsh
 
 # Install command-line tools using Homebrew.
-
-# Make sure we’re using the latest Homebrew.
-brew update
-
+brew update                       # Make sure we’re using the latest Homebrew.
 # Upgrade any already-installed formulae.
 brew upgrade
 
@@ -13,78 +10,44 @@ BREW_PREFIX=$(brew --prefix)
 DOTFILE_REPO=${0:a:h}/../
 
 
-# Install GNU core utilities (those that come with macOS are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils --with-default-names
-ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
-
-# Install some other useful utilities like `sponge`.
-brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
-# Install a modern version of Bash.
-brew install bash
-brew install bash-completion2
-
-# Switch to using brew-installed bash as default shell
-if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
-  echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
-  chsh -s "${BREW_PREFIX}/bin/bash";
-fi;
-
-# Install `wget` with IRI support.
-brew install wget --with-iri
-
-# Install GnuPG to enable PGP-signing commits.
-brew install gnupg
+# GNU utils; overwrites the Mac versions with plugin gnu-utils
+brew install coreutils        # Install GNU core utils (those that come with macOS are outdated)
+brew install findutils        # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
+brew install gnu-sed          # Install GNU `sed`, overwriting the built-in `sed`
+brew install gnupg            # Install GnuPG to enable PGP-signing commits.
+brew install wget
 
 # Install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
+brew install git
 brew install grep
 brew install openssh
 brew install screen
-brew install php
-brew install gmp
+brew install vim
 
-# Install font tools.
-brew tap bramstein/webfonttools
-brew install sfnt2woff
-brew install sfnt2woff-zopfli
-brew install woff2
-
-# Install other useful binaries.
-brew install ack
-#brew install exiv2
-brew install git
-brew install git-lfs
-brew install gs
-brew install imagemagick --with-webp
-brew install lua
-brew install lynx
-brew install p7zip
-brew install pigz
-brew install pv
-brew install rename
-brew install rlwrap
-brew install ssh-copy-id
-brew install tree
-brew install vbindiff
-brew install zopfli
-
-# Extra utilities
-brew install ripgrep
+# Developer utils
+brew install pygments
+brew install ripgrep          # Super-fast grepping
 brew cask install iterm2
 
-# Terminal utilities
-brew install fasd
-eval "$(fasd --init auto)"
-brew install fzf
-$BREW_PREFIX/opt/fzf/install
-mkdir -p $DOTFILE_REPO/.zshconfig/plugins/fzf
-mv ~/.fzf.zsh $DOTFILE_REPO/.zshconfig/plugins/fzf/fzf.plugin.zsh
-rm ~/.fzf.bash  # Only if still using ZSH exclusively
+# Install other useful binaries.
+brew install imagemagick
+brew install lynx             # Text-based web browser
+brew install p7zip            # 7zip compression app
+brew install tree             # file tree visualizer
+
+# Full user applications (need to open manually the first time)
+brew cask install 1password
+brew cask install calibre
+brew cask install handbrake
+brew cask install jetbrains-toolbox     # Used to install and sync IntelliJ, etc
+brew cask install qbittorrent
+brew cask install quicken
+brew cask install spotify
+brew cask install vlc
+brew cask install virtualbox
+brew cask install virtualbox-extension-pack
+brew cask install wireshark
+
 
 # Remove outdated versions from the cellar.
 brew cleanup

@@ -21,4 +21,7 @@ then
   echo "=> Done installing Homebrew"
 fi
 
-exit 0
+# Install all homebrew packages
+echo "=> Installing all Homebrew packages"
+$ZSH/homebrew/brew.sh
+echo "=> Done installing Homebrew packages"

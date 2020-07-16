@@ -6,8 +6,8 @@
 	"installed_packages":
 	[
 		"Dracula Color Scheme",
-		"EditorConfig",
 		"Git",
+		"Nord",
 		"Package Control",
 		"Protobuf Syntax Hightlighting",
 		"SublimeLinter-annotations",

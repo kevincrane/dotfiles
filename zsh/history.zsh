@@ -57,3 +57,5 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt append_history         # append commands to history when the shell exits
 
 setopt HIST_IGNORE_ALL_DUPS   # when adding a new entry delete older duplicates
+
+unset histchars               # dumb, but makes 'history' tab-complete show up w/ fewer chars; used only by "history expansion"

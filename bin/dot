@@ -51,7 +51,7 @@ git submodule foreach 'echo "=> Pulling latest version of ${name#zsh/plugins/} (
 
 # Set macOS defaults
 echo "=> $ZSH/macos/set-defaults.sh"
-$ZSH/macos/set-defaults.sh
+# $ZSH/macos/set-defaults.sh
 
 # Install homebrew
 echo "=> $ZSH/homebrew/install.sh"
@@ -62,5 +62,5 @@ echo "=> brew update"
 brew update
 
 # Install all programs and configs
-echo "=> $ZSH/script/install_all.sh"
-$ZSH/script/install_all.sh
+echo "=> $ZSH/scripts/install_all.sh"
+$ZSH/scripts/install_all.sh
