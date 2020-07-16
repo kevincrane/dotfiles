@@ -1,9 +1,11 @@
 #!/usr/bin/env zsh
 
+# This is a cheap hack to ensure we don't install a bunch of extra apps on work computers
+HOME_COMPUTER='kcrane-mbp'
+
 # Install command-line tools using Homebrew.
-brew update                       # Make sure we’re using the latest Homebrew.
-# Upgrade any already-installed formulae.
-brew upgrade
+brew update                   # Make sure we’re using the latest Homebrew.
+brew upgrade                  # Upgrade any already-installed formulae.
 
 # Save Homebrew’s installed location.
 BREW_PREFIX=$(brew --prefix)
@@ -20,7 +22,7 @@ brew install wget
 # Install more recent versions of some macOS tools.
 brew install git
 brew install grep
-brew install openssh
+# brew install openssh
 brew install screen
 brew install vim
 
@@ -36,17 +38,20 @@ brew install p7zip            # 7zip compression app
 brew install tree             # file tree visualizer
 
 # Full user applications (need to open manually the first time)
-brew cask install 1password
-brew cask install calibre
-brew cask install handbrake
-brew cask install jetbrains-toolbox     # Used to install and sync IntelliJ, etc
-brew cask install qbittorrent
-brew cask install quicken
-brew cask install spotify
-brew cask install vlc
-brew cask install virtualbox
-brew cask install virtualbox-extension-pack
-brew cask install wireshark
+# NB: only installs these apps on the "home computer"
+if [[ $(hostname) =~ $HOME_COMPUTER ]]; then
+  brew cask install 1password             # Creates a .app file in /Applications
+  brew cask install calibre
+  brew cask install handbrake
+  brew cask install jetbrains-toolbox     # Used to install and sync IntelliJ, etc
+  brew cask install qbittorrent
+  brew cask install quicken               # Creates a .app file in /Applications
+  brew cask install spotify               # Creates a .app file in /Applications
+  brew cask install vlc                   # Creates a .app file in /Applications
+  brew cask install virtualbox
+  brew cask install virtualbox-extension-pack
+  brew cask install wireshark
+fi
 
 
 # Remove outdated versions from the cellar.
