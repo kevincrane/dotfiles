@@ -27,6 +27,7 @@ brew install screen
 brew install vim
 
 # Developer utils
+brew install go
 brew install pygments
 brew install ripgrep          # Super-fast grepping
 brew cask install iterm2

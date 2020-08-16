@@ -10,6 +10,7 @@
 # - sets default MacOS config values
 # - installs homebrew & all apps
 # - runs all install.sh scripts
+#
 
 set -e
 
@@ -17,7 +18,7 @@ parentDirectory="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
 dotfilesDirectory="$(cd "$( dirname "$parentDirectory" )" && pwd -P)"
 
 displayUsageAndExit() {
-  echo "dot -- dotfiles management"
+  echo "dot -- dotfiles management (run from $dotfilesDirectory)"
   echo ""
   echo "Usage: dot [options]"
   echo ""

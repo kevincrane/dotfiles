@@ -6,7 +6,7 @@ export ZSH_CACHE_DIR="$HOME/.cache/zsh"
 mkdir -p $ZSH_CACHE_DIR
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/workspace
+export WORKSPACE=~/workspace
 
 # Move cursor between words with Bash behavior (must be called before plugins)
 autoload -U select-word-style && select-word-style bash
