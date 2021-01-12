@@ -28,6 +28,7 @@ brew install vim
 
 # Developer utils
 brew install go
+brew install node
 brew install pygments
 brew install ripgrep          # Super-fast grepping
 brew cask install iterm2
@@ -42,6 +43,7 @@ brew install tree             # file tree visualizer
 # NB: only installs these apps on the "home computer"
 if [[ $(hostname) =~ $HOME_COMPUTER ]]; then
   brew cask install 1password             # Creates a .app file in /Applications
+  brew cask install arduino
   brew cask install calibre
   brew cask install handbrake
   brew cask install jetbrains-toolbox     # Used to install and sync IntelliJ, etc
