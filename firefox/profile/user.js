@@ -17,3 +17,8 @@ user_pref("browser.compactmode.show", true);
 // ** Useful Options ***********************************************************
 // Integrated calculator at urlbar
 user_pref("browser.urlbar.suggest.calculator", true);
+
+
+// Kevin's Firefox changes
+user_pref("accessibility.typeaheadfind.enablesound", false);
+user_pref("accessibility.typeaheadfind.flashBar", 0);
