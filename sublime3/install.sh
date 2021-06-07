@@ -7,7 +7,7 @@ CURRENT_DIR="${0:a:h}"
 SUBLIME_SETTINGS_DIR="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
 
 echo "=> Installing Sublime Text 3"
-brew cask ls --versions sublime-text || brew cask install sublime-text
+brew ls --cask --versions sublime-text || brew install --cask sublime-text
 
 echo "=> Killing any running Sublime processes"
 pkill "Sublime Text"

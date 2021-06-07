@@ -5,7 +5,7 @@
 FIREFOX_PROFILE=`ls -d ~/Library/Application\ Support/Firefox/Profiles/* | grep "default"`
 
 echo "=> Installing and configuring Firefox"
-brew cask ls --versions firefox || brew cask install firefox
+brew ls --cask --versions firefox || brew install --cask firefox
 
 # Install Firefox Proton UI Fix
 wget -q -O firefox-proton-ui.zip https://github.com/black7375/Firefox-UI-Fix/archive/refs/heads/master.zip

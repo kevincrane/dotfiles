@@ -31,7 +31,7 @@ brew install go
 brew install node
 brew install pygments
 brew install ripgrep          # Super-fast grepping
-brew cask install iterm2
+brew install --cask iterm2
 
 # Install other useful binaries.
 brew install imagemagick
@@ -42,18 +42,18 @@ brew install tree             # file tree visualizer
 # Full user applications (need to open manually the first time)
 # NB: only installs these apps on the "home computer"
 if [[ $(hostname) =~ $HOME_COMPUTER ]]; then
-  brew cask install 1password             # Creates a .app file in /Applications
-  brew cask install arduino
-  brew cask install calibre
-  brew cask install handbrake
-  brew cask install jetbrains-toolbox     # Used to install and sync IntelliJ, etc
-  brew cask install qbittorrent
-  brew cask install quicken               # Creates a .app file in /Applications
-  brew cask install spotify               # Creates a .app file in /Applications
-  brew cask install vlc                   # Creates a .app file in /Applications
-  brew cask install virtualbox
-  brew cask install virtualbox-extension-pack
-  brew cask install wireshark
+  brew install --cask 1password             # Creates a .app file in /Applications
+  brew install --cask arduino
+  brew install --cask calibre
+  brew install --cask handbrake
+  brew install --cask jetbrains-toolbox     # Used to install and sync IntelliJ, etc
+  brew install --cask qbittorrent
+  brew install --cask quicken               # Creates a .app file in /Applications
+  brew install --cask spotify               # Creates a .app file in /Applications
+  brew install --cask vlc                   # Creates a .app file in /Applications
+  brew install --cask virtualbox
+  brew install --cask virtualbox-extension-pack
+  brew install --cask wireshark
 fi
 
 
