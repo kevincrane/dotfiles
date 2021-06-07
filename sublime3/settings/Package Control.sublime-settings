@@ -5,9 +5,11 @@
 	],
 	"installed_packages":
 	[
+		"Dockerfile Syntax Highlighting",
 		"Dracula Color Scheme",
 		"EditorConfig",
 		"Git",
+		"Kotlin",
 		"Package Control",
 		"Protobuf Syntax Hightlighting",
 		"SublimeLinter-annotations",
