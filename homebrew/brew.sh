@@ -45,17 +45,17 @@ brew install tree             # file tree visualizer
 # NB: only installs these apps on the "home computer"
 if [[ $(hostname) =~ $HOME_COMPUTER ]]; then
   brew install --cask 1password             # Creates a .app file in /Applications
-  brew install --cask arduino
-  brew install --cask calibre
-  brew install --cask handbrake
-  brew install --cask jetbrains-toolbox     # Used to install and sync IntelliJ, etc
-  brew install --cask qbittorrent
-  brew install --cask quicken               # Creates a .app file in /Applications
-  brew install --cask spotify               # Creates a .app file in /Applications
-  brew install --cask vlc                   # Creates a .app file in /Applications
+  brew install --cask --appdir="~/Applications" arduino
+  brew install --cask --appdir="~/Applications" calibre
+  brew install --cask --appdir="~/Applications" handbrake
+  brew install --cask --appdir="~/Applications" jetbrains-toolbox     # Used to install and sync IntelliJ, etc
+  brew install --cask --appdir="~/Applications" qbittorrent
+  brew install --cask --appdir="~/Applications" quicken               # Creates a .app file in /Applications
+  brew install --cask --appdir="~/Applications" spotify               # Creates a .app file in /Applications
+  brew install --cask --appdir="~/Applications" vlc                   # Creates a .app file in /Applications
   brew install --cask virtualbox
   brew install --cask virtualbox-extension-pack
-  brew install --cask wireshark
+  brew install --cask --appdir="~/Applications" wireshark
 fi
 
 
