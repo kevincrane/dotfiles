@@ -27,6 +27,8 @@ brew install screen
 brew install vim
 
 # Developer utils
+brew install bat              # 'cat' with highlighting and paging
+brew install fd               # Alternative to 'find'
 brew install go
 brew install node
 brew install pygments
