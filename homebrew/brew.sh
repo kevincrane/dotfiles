@@ -49,6 +49,7 @@ if [[ $(hostname) =~ $HOME_COMPUTER ]]; then
   brew install --cask --appdir="~/Applications" calibre
   brew install --cask --appdir="~/Applications" handbrake
   brew install --cask --appdir="~/Applications" jetbrains-toolbox     # Used to install and sync IntelliJ, etc
+  brew install --cask --appdir "/Applications" little-snitch          # License in email
   brew install --cask --appdir="~/Applications" qbittorrent
   brew install --cask --appdir="~/Applications" quicken               # Creates a .app file in /Applications
   brew install --cask --appdir="~/Applications" spotify               # Creates a .app file in /Applications

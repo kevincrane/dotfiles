@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+# Install and initialize any plugin submodules for ZSH
+git submodule init
+git pull --recurse-submodules
+
 # Install fasd; configured in plugin/fasd
 brew install fasd
 

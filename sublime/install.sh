@@ -1,12 +1,12 @@
 #!/usr/bin/env zsh
 
-# Install Sublime Text 3
-# Note for Kevin: you have a Sublime 3 license in Dropbox
+# Install Sublime Text
+# Note for Kevin: you have a Sublime license in Dropbox
 
 CURRENT_DIR="${0:a:h}"
-SUBLIME_SETTINGS_DIR="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+SUBLIME_SETTINGS_DIR="$HOME/Library/Application Support/Sublime Text/Packages/User"
 
-echo "=> Installing Sublime Text 3"
+echo "=> Installing Sublime Text"
 brew ls --cask --versions sublime-text || brew install --cask sublime-text
 
 echo "=> Killing any running Sublime processes"
@@ -21,4 +21,4 @@ for source_file in $CURRENT_DIR/settings/*; do
   ln -s $source_file $dest_file
 done
 
-echo "=> Done installing Sublime Text 3"
+echo "=> Done installing Sublime Text"

@@ -12,11 +12,11 @@ brew ls --cask --versions firefox || brew install --cask firefox
 # Firefox UI Improvements from: https://github.com/black7375/Firefox-UI-Fix/
 echo "=> Copying userChrome files to $FIREFOX_PROFILE..."
 
-ln -sf profile/user.js $FIREFOX_PROFILE/user.js
+ln -f ${CURRENT_DIR}/profile/user.js $FIREFOX_PROFILE/user.js
 mkdir -p ${FIREFOX_PROFILE}/chrome
-ln -sf profile/chrome/userChrome.css $FIREFOX_PROFILE/chrome/userChrome.css
-ln -sf profile/chrome/userContent.css $FIREFOX_PROFILE/chrome/userContent.css
+ln -f ${CURRENT_DIR}/profile/chrome/userChrome.css $FIREFOX_PROFILE/chrome/userChrome.css
+ln -f ${CURRENT_DIR}/profile/chrome/userContent.css $FIREFOX_PROFILE/chrome/userContent.css
 mkdir -p ${FIREFOX_PROFILE}/chrome/icons
-ln -sf profile/chrome/icons/tab-bottom-corner.svg $FIREFOX_PROFILE/chrome/icons/tab-bottom-corner.svg
+ln -f ${CURRENT_DIR}/profile/chrome/icons/tab-bottom-corner.svg $FIREFOX_PROFILE/chrome/icons/tab-bottom-corner.svg
 
 echo "=> Done installing Firefox"

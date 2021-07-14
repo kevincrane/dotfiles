@@ -87,14 +87,14 @@ any extra environment variables, aliases, or configs for these apps can go in
 ### How to save the configurations for an app
 
 If an app needs extra configuration beyond just installing it, first make sure
-it's in its own app folder (e.g. `sublime3`). Then you'll need to identify
+it's in its own app folder (e.g. `sublime`). Then you'll need to identify
 which settings need to be saved in the dotfile repo.
 
 If you need to link a full configuration file, you can symlink it as follows
 in `install.sh`. This is more dangerous than I'd lke since you're deleting the
 original, so be sure the original is copied into this repo before you run it.
 After that you should be deleting the original and then immediately linking it
-back to itself. See `sublime3/install.sh` for an example.
+back to itself. See `sublime/install.sh` for an example.
 
 ```sh
 CURRENT_DIR="${0:a:h}"
